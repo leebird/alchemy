@@ -1,0 +1,6 @@
+[submodule "annotation"]
+	path = annotation
+	url = https://github.com/leebird/annotation.git
+[submodule "alignment"]
+	path = alignment
+	url = https://github.com/leebird/alignment.git
