@@ -1,10 +1,11 @@
-from db.base import Base
-from db.version import Version
-from db.argument_role import ArgumentRole
-from db.entity import Entity
-from db.event import Event
+from .base import Base
+from .version import Version
+from .argument_role import ArgumentRole
+from .entity import Entity
+from .event import Event
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
+from
 
 
 class ArgumentEntity(Base):

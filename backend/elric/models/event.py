@@ -2,7 +2,7 @@ from db.base import Base
 from db.version import Version
 from db.document import Document
 from db.event_category import EventCategory
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
+from sqlalchemy import Column, Integer, ForeignKey, Table
 from sqlalchemy.orm import relationship
 
 association_table = Table('association', Base.metadata,
