@@ -1,10 +1,9 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from db.base import Base
 from db.entity import Entity
-from db.event import Event
 
 
-class Property(Base):
+class EntityProperty(Base):
     """key-value property pairs for entity or event
     """
     __tablename__ = 'properties'
@@ -13,8 +12,7 @@ class Property(Base):
     id = Column(Integer, primary_key=True)
     label = Column(String(40))
     value = Column(String(40))
-    entity = Column(ForeignKey(Entity.id))
-    event = Column(ForeignKey(Event.id))
+    entity = Column(ForeignKey(Entity.id), nullable=False)
 
     def __repr__(self):
-        return "<Property(key='%s', value='%s')>" % self.key, self.value
+        return "<Entity Property(key='%s', value='%s')>" % self.key, self.value

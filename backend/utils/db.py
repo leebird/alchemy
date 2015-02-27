@@ -7,5 +7,5 @@ from db.base import Base
 # DEFAULT COLLATE utf8_unicode_ci;
 
 if __name__ == '__main__':
-    engine = create_engine('mysql+pymysql://root:198884@localhost/alchemy')
+    engine = create_engine('mysql+pymysql://root:198884@localhost/alchemy', echo=True)
     Base.metadata.create_all(engine, checkfirst=True)

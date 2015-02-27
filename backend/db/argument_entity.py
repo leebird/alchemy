@@ -1,21 +1,20 @@
 from db.base import Base
 from db.version import Version
-from db.document import Document
-from db.entity_category import EntityCategory
+from db.argument_role import ArgumentRole
+from db.entity import Entity
+from db.event import Event
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
-class Entity(Base):
-    __tablename__ = 'entities'
+
+class ArgumentEntity(Base):
+    __tablename__ = 'arguments_entity'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 
     id = Column(Integer, primary_key=True)
-    document = Column(Integer, ForeignKey(Document.id))
-    category = Column(Integer, ForeignKey(EntityCategory.id))
-    start = Column(Integer)
-    end = Column(Integer)
-    text = Column(Text)
-    properties = relationship('EntityProperty')
+    role = Column(Integer, ForeignKey(ArgumentRole.id), nullable=False)
+    event = Column(Integer, ForeignKey(Event.id), nullable=False)
+    argument = Column(Integer, ForeignKey(Entity.id), nullable=False)
     version = Column(Integer, ForeignKey(Version.id))
 
     def __repr__(self):

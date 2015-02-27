@@ -1,6 +1,7 @@
 from db.base import Base
 from db.version import Version
-from db.category import Category
+from db.document import Document
+from db.event_category import EventCategory
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 
@@ -14,10 +15,11 @@ class Event(Base):
     __table_args__ = {'mysql_engine': 'InnoDB'}
 
     id = Column(Integer, primary_key=True)
-    document = Column(String(40))
-    category = Column(Integer, ForeignKey(Category.id))
-    arguments = Column(50)
-    properties = relationship('Property')
+    document = Column(Integer, ForeignKey(Document.id))
+    category = Column(Integer, ForeignKey(EventCategory.id))
+    arguments_entity = relationship('ArgumentEntity')
+    arguments_event = relationship('ArgumentEvent')
+    properties = relationship('EventProperty')
     version = Column(Integer, ForeignKey(Version.id))
 
     def __repr__(self):
