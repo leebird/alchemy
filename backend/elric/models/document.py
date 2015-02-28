@@ -1,7 +1,7 @@
-from db.base import Base
 from sqlalchemy import Column, Integer, String, Text
+from elric import db
 
-class Document(Base):
+class Document(db.Model):
     __tablename__ = 'documents'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 

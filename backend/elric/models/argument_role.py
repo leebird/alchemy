@@ -1,9 +1,8 @@
-from db.base import Base
-from db.version import Version
+from .version import Version
 from sqlalchemy import Column, Integer, String, ForeignKey
+from elric import db
 
-
-class ArgumentRole(Base):
+class ArgumentRole(db.Model):
     __tablename__ = 'events'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 

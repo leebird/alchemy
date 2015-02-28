@@ -1,9 +1,9 @@
-from db.base import Base
-from db.version import Version
+from elric import db
+from .version import Version
 from sqlalchemy import Column, Integer, String, ForeignKey
 
 
-class EntityCategory(Base):
+class EntityCategory(db.Model):
     __tablename__ = 'entity_category'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 

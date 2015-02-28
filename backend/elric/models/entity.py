@@ -1,11 +1,11 @@
-from db.base import Base
-from db.version import Version
-from db.document import Document
-from db.entity_category import EntityCategory
+from elric import db
+from .version import Version
+from .document import Document
+from .entity_category import EntityCategory
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
-class Entity(Base):
+class Entity(db.Model):
     __tablename__ = 'entities'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 

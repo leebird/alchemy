@@ -1,7 +1,7 @@
-from db.base import Base
 from sqlalchemy import Column, Integer, String
+from elric import db
 
-class User(Base):
+class User(db.Model):
     __tablename__ = 'users'
     __table_args__ = {'mysql_engine': 'InnoDB'}
     

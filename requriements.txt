@@ -1,3 +1,5 @@
 SQLAlchemy
 Flask
 PyMySQL
+Flask-SQLAlchemy
+docopt

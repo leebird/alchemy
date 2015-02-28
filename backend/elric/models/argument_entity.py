@@ -1,14 +1,12 @@
-from .base import Base
 from .version import Version
 from .argument_role import ArgumentRole
 from .entity import Entity
 from .event import Event
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
-from sqlalchemy.orm import relationship
-from
+from elric import db
 
 
-class ArgumentEntity(Base):
+class ArgumentEntity(db.Model):
     __tablename__ = 'arguments_entity'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 

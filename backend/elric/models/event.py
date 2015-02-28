@@ -1,16 +1,16 @@
-from db.base import Base
-from db.version import Version
-from db.document import Document
-from db.event_category import EventCategory
+from .version import Version
+from .document import Document
+from .event_category import EventCategory
 from sqlalchemy import Column, Integer, ForeignKey, Table
 from sqlalchemy.orm import relationship
+from elric import db
 
 association_table = Table('association', Base.metadata,
                           Column('event_id', Integer, ForeignKey('left.id')),
                           Column('entity_id', Integer, ForeignKey('right.id'))
 )
 
-class Event(Base):
+class Event(db.Model):
     __tablename__ = 'events'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 

@@ -1,9 +1,9 @@
+from elric import db
 from sqlalchemy import Column, Integer, String, ForeignKey
-from db.base import Base
-from db.entity import Entity
+from .entity import Entity
 
 
-class EntityProperty(Base):
+class EntityProperty(db.Model):
     """key-value property pairs for entity or event
     """
     __tablename__ = 'properties'

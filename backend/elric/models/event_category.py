@@ -1,9 +1,8 @@
-from db.base import Base
-from db.version import Version
+from .version import Version
 from sqlalchemy import Column, Integer, String, ForeignKey
+from elric import db
 
-
-class EventCategory(Base):
+class EventCategory(db.Model):
     __tablename__ = 'event_category'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 

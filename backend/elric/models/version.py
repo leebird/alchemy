@@ -1,12 +1,12 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from db.base import Base
-from db.user import User
-from db.entity import Entity
-from db.event import Event
-from db.category import Category
+from .user import User
+from .entity import Entity
+from .event import Event
+from .category import Category
+from elric import db
 
-class Version(Base):
+class Version(db.Model):
     __tablename__ = 'versions'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 
