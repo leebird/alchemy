@@ -17,7 +17,7 @@ def create_db(app: Flask):
     with app.app_context():
         # only valid if the user is superuser
         #db.session.execute("CREATE EXTENSION IF NOT EXISTS hstore;")
-        #db.session.commit()
+        # db.session.commit()
         db.create_all()
 
 

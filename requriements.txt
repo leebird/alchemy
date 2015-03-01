@@ -2,4 +2,5 @@ SQLAlchemy
 Flask
 PyMySQL
 Flask-SQLAlchemy
+Flask-RESTful
 docopt

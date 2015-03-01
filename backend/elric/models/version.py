@@ -1,22 +1,25 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
 from .user import User
-from .entity import Entity
-from .event import Event
-from .category import Category
 from elric import db
+import datetime
 
 class Version(db.Model):
     __tablename__ = 'versions'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 
-    id = Column(Integer, primary_key=True)
-    user = Column(Integer, ForeignKey(User.id))
-    version = Column(String(50))
+    id = db.Column(db.Integer, primary_key=True)
+    # TODO: how to get the user from a version object, currently it is just user id not user object
+    user = db.Column(db.Integer, db.ForeignKey(User.id))
+    datetime = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+    version = db.Column(db.String(64))
     
-    entities = relationship('Entity')
-    events = relationship('Event')
-    categories = relationship('Category')
-    
+    entities = db.relationship('Entity')
+    events = db.relationship('Event')
+    entity_categories = db.relationship('EntityCategory')
+    event_categories = db.relationship('EventCategory')
+
+    def __init__(self, user, version):
+        self.user = user
+        self.version = version
+
     def __repr__(self):
-        return "<Version(name='%s', version='%s')>" % self.name, self.version
+        return "<Version(user='%s', version='%s')>" % self.user.username, self.version
