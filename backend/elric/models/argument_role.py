@@ -1,14 +1,13 @@
 from .version import Version
-from sqlalchemy import Column, Integer, String, ForeignKey
 from elric import db
 
 class ArgumentRole(db.Model):
-    __tablename__ = 'events'
+    __tablename__ = 'argument_roles'
     __table_args__ = {'mysql_engine': 'InnoDB'}
 
-    id = Column(Integer, primary_key=True)
-    role = Column(String(20))
-    version = Column(Integer, ForeignKey(Version.id))
+    id = db.Column(db.Integer, primary_key=True)
+    role = db.Column(db.String(32))
+    version = db.Column(db.Integer, db.ForeignKey(Version.id))
 
     def __repr__(self):
         return "<Argument Role(role='%s', start='%s', end='%s', text='%s')>" % self.role
